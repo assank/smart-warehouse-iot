@@ -1,0 +1,403 @@
+{
+  "version": 1,
+  "author": "Smart Warehouse IoT",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 30,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": -140,
+      "left": -210,
+      "attrs": {
+        "temperature": "24",
+        "humidity": "45"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "weight",
+      "top": 40,
+      "left": -220,
+      "attrs": {
+        "value": "340"
+      }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled",
+      "top": -145,
+      "left": 15,
+      "attrs": {
+        "i2cAddress": "0x3c"
+      }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "svA",
+      "top": -150,
+      "left": 330,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "svB",
+      "top": -60,
+      "left": 330,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "svC",
+      "top": 30,
+      "left": 330,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "bA",
+      "top": 260,
+      "left": -120,
+      "attrs": {
+        "color": "blue",
+        "label": "A",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "bB",
+      "top": 260,
+      "left": -60,
+      "attrs": {
+        "color": "yellow",
+        "label": "B",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "bC",
+      "top": 260,
+      "left": 0,
+      "attrs": {
+        "color": "green",
+        "label": "C",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "bStop",
+      "top": 330,
+      "left": -60,
+      "attrs": {
+        "color": "red",
+        "label": "STOP",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "beltLed",
+      "top": 250,
+      "left": 330,
+      "attrs": {
+        "color": "green",
+        "label": "BELT"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "beltRes",
+      "top": 300,
+      "left": 290,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "alarmLed",
+      "top": 250,
+      "left": 430,
+      "attrs": {
+        "color": "red",
+        "label": "ALARM"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "alarmRes",
+      "top": 300,
+      "left": 390,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 300,
+      "left": 120,
+      "attrs": {
+        "volume": "0.1"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "t1",
+      "top": 120,
+      "left": -260,
+      "attrs": {
+        "text": "WEIGHT: potentiometer = parcel kg (0-50)"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "t2",
+      "top": 235,
+      "left": -130,
+      "attrs": {
+        "text": "Clear lane A / B / C"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "t3",
+      "top": 375,
+      "left": -120,
+      "attrs": {
+        "text": "E-STOP (press = toggle)"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "t4",
+      "top": -190,
+      "left": 330,
+      "attrs": {
+        "text": "Diverters A / B / C"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:3V3",
+      "dht:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "dht:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:3V3",
+      "weight:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "weight:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:D4",
+      "dht:SDA",
+      "green",
+      []
+    ],
+    [
+      "esp:D34",
+      "weight:SIG",
+      "green",
+      []
+    ],
+    [
+      "esp:3V3",
+      "oled:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "oled:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:D21",
+      "oled:SDA",
+      "green",
+      []
+    ],
+    [
+      "esp:D22",
+      "oled:SCL",
+      "blue",
+      []
+    ],
+    [
+      "esp:VIN",
+      "svA:V+",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "svA:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:D18",
+      "svA:PWM",
+      "orange",
+      []
+    ],
+    [
+      "esp:VIN",
+      "svB:V+",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "svB:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:D19",
+      "svB:PWM",
+      "orange",
+      []
+    ],
+    [
+      "esp:VIN",
+      "svC:V+",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "svC:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:D23",
+      "svC:PWM",
+      "orange",
+      []
+    ],
+    [
+      "esp:D25",
+      "bA:1.l",
+      "green",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "bA:2.l",
+      "black",
+      []
+    ],
+    [
+      "esp:D26",
+      "bB:1.l",
+      "green",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "bB:2.l",
+      "black",
+      []
+    ],
+    [
+      "esp:D27",
+      "bC:1.l",
+      "green",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "bC:2.l",
+      "black",
+      []
+    ],
+    [
+      "esp:D14",
+      "bStop:1.l",
+      "green",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "bStop:2.l",
+      "black",
+      []
+    ],
+    [
+      "esp:D13",
+      "beltRes:1",
+      "green",
+      []
+    ],
+    [
+      "beltRes:2",
+      "beltLed:A",
+      "green",
+      []
+    ],
+    [
+      "beltLed:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D15",
+      "alarmRes:1",
+      "red",
+      []
+    ],
+    [
+      "alarmRes:2",
+      "alarmLed:A",
+      "red",
+      []
+    ],
+    [
+      "alarmLed:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D32",
+      "buzzer:1",
+      "purple",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "buzzer:2",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
